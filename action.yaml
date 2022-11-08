@@ -1,0 +1,27 @@
+name: 'Label Jira issue'
+description: 'Attach label to the Jira ticket'
+inputs:
+  jira_url:
+    description: 'Base Jira url'
+    required: true
+  jira_user:
+    description:
+    required: true
+  jira_token:
+    description: 'Jira access token'
+    required: true
+  jira_issue:
+    description: 'Jira issues id'
+    required: true
+  jira_label:
+    description: 'Jira label'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.jira_url }}
+    - ${{ inputs.jira_user }}
+    - ${{ inputs.jira_token }}
+    - ${{ inputs.jira_issue }}
+    - ${{ inputs.jira_label }}
